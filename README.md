@@ -87,7 +87,10 @@ Only perform this if this is the first time you will setup your Git Environment
 
    **Desired Output:**
    ```txt
-   //Modify this
+   Student ID: 101, Name: Alice, GPA: 3.8
+   Student ID: 102, Name: Bob, GPA: 3.5
+   Student ID: 103, Name: Charlie, GPA: 3.9
+   Total students: 3
    ```
 
    **Notable Observations:**
@@ -193,7 +196,7 @@ Only perform this if this is the first time you will setup your Git Environment
       - In the same file (StudentDemo.java), outside the Student class, create the main method.
       ```Java
       public class StudentDemo {
-          public static void main(String args) {
+          public static void main(String[] args) {
               // Code will go here
           }
       }
