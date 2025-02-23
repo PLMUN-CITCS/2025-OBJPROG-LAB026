@@ -1,7 +1,7 @@
-# **2025-OBJPROG-LAB025**
+# **2025-OBJPROG-LAB026**
 Week 05 - Methods in Java
 
-Laboratory # 25 - Week 05 - Guided Coding Exercise 4: Class Methods and Class Variables (Static Members)
+Laboratory # 26 - Week 05 - Guided Coding Exercise 5: Integrated Example - Modeling a Student Class
 
 ## **Instructions**
 
@@ -77,14 +77,13 @@ Only perform this if this is the first time you will setup your Git Environment
 
 ### **Step 3: Complete the Assignment**
 
-**Laboratory # 25 - Week 05 - Guided Coding Exercise 4: Class Methods and Class Variables (Static Members)**
+**Laboratory # 26 - Week 05 - Guided Coding Exercise 5: Integrated Example - Modeling a Student Class**
 
    **Objective:**
-   - Understand and use access modifiers (public, private, protected).
-   - Define methods and attributes within a class.
+   - Combine all concepts: classes, objects, access modifiers, constructors, methods, static members, and a discussion on deconstruction.
 
    **File Naming Convention:**
-   - `ItemDemo.java`
+   - `StudentDemo.java`
 
    **Desired Output:**
    ```txt
@@ -92,125 +91,141 @@ Only perform this if this is the first time you will setup your Git Environment
    ```
 
    **Notable Observations:**
-   - The objectCount variable is shared by all instances of the Item class. Each time a new Item object is created, the objectCount is incremented, and this change is reflected across all objects.
-   - You can call the static method displayObjectCount() directly using the class name, without needing an object instance.
+   - This example combines various object-oriented programming concepts:
+      - Classes and objects
+      - Access modifiers
+      - Constructors
+      - Instance methods
+      - Static variables and methods
+   - The studentCount variable is shared by all instances of the Student class and is incremented each time a new Student object is created.
+   - You can call the static method displayStudentCount() directly using the class name, without needing an object instance.
 
    **Java Programming Best Practices:**
-   - Use static variables when you want to share data across all objects of a class.
-   - Use static methods to define utility functions or methods that don't operate on specific object instances.
-   - Use descriptive names for static variables and methods.
+   - Use private access for attributes to enforce encapsulation.
+   - Provide constructors to initialize objects.
+   - Use static variables for data shared across all objects of a class.
+   - Use static methods for operations related to the class itself rather than specific instances.
       
    **Step-by-Step Instructions:**
 
    1. Create the Item Class
-      - Create a new Java file named `ItemDemo.java`.
-      - Define a class called `Item`.
+      - Create a new Java file named `StudentDemo.java`.
+      - Define a class called `Student`.
       ```Java      
-      class Item {
+      class Student {
           // Code will go here
       }
       ```
             
-   2. Add a Static Variable
-      - Inside the Item class, declare a static variable named objectCount of type int. Initialize it to 0.
-      - Use the static keyword to indicate that this variable belongs to the class itself, not to any specific object of the class.
+   2. Add Private Attributes
+      - Inside the Student class, declare three instance variables (attributes) with private access:
+         - name of type String
+         - id of type int
+         - gpa of type double
       ```Java
-      class Item {
-          static int objectCount = 0;
+      class Student {
+          private String name;
+          private int id;
+          private double gpa;
       }
       ```
 
-   3. Add an Instance Variable
-      - Inside the Item class, declare an instance variable named itemName of type String.
+   3. Add a Static Variable
+      - Inside the Student class, declare a static variable named studentCount of type int. Initialize it to 0.
+      - Use the static keyword to indicate that this variable belongs to the class itself, not to any specific object of the class.
       ```Java
-      class Item {
-          //... (static variable)...
-          String itemName;
+      class Student {
+          //... (private attributes)...
+          private static int studentCount = 0;
       }
       ```
 
    4. Create a Constructor
-      - Inside the Item class, create a constructor that takes a String parameter named itemName.
-      - Inside the constructor, initialize the itemName instance variable with the value of the itemName parameter.
-      - Increment the static objectCount variable by 1.
+      - Inside the Student class, create a constructor.
+      - The constructor should take three parameters:
+         - a String for the name
+         - an int for the id
+         - a double for the gpa
+      - Inside the constructor, initialize the name, id, and gpa attributes using the provided parameters.
+      - Increment the static studentCount variable by 1.
       ```Java
-      class Item {
-          //... (variables)...
+      class Student {
+          //... (attributes)...
       
-          public Item(String itemName) {
-              this.itemName = itemName;
-              objectCount++;
+          public Student(String name, int id, double gpa) {
+              this.name = name;
+              this.id = id;
+              this.gpa = gpa;
+              studentCount++;
           }
       }
       ```
 
-   5. Add a Static Method
-      - Inside the Item class, create a static method named displayObjectCount.
+   5. Add a displayStudentInfo Method
+      - Inside the Student class, create a method named displayStudentInfo.
       - This method should not return any value (void).
-      - Use the static keyword to indicate that this method belongs to the class.
-      - Inside the displayObjectCount method, add a println statement to print the value of the objectCount variable.
+      - Inside the displayStudentInfo method, add a println statement to print the student's information in the format: "Student ID: [id], Name: [name], GPA: [gpa]"
       ```Java
-      class Item {
-          //... (variables and constructor)...
+      class Student {
+          //... (attributes and constructor)...
       
-          public static void displayObjectCount() {
-              System.out.println("Total objects created: " + objectCount);
+          public void displayStudentInfo() {
+              System.out.println("Student ID: " + id + ", Name: " + name + ", GPA: " + gpa);
           }
       }
       ```
 
-   6. Add an Instance Method
-      - Inside the Item class, create an instance method named displayItem.
+   6. Add a Static displayStudentCount Method
+      - Inside the Student class, create a static method named displayStudentCount.
       - This method should not return any value (void).
-      - Inside the displayItem method, add a println statement to print the name of the item.
+      - Inside the displayStudentCount method, add a println statement to print the value of the studentCount variable.
       ```Java
-      class Item {
+      class Student {
           //... (other methods)...
       
-          public void displayItem() {
-              System.out.println("Item: " + itemName);
+          public static void displayStudentCount() {
+              System.out.println("Total students: " + studentCount);
           }
       }
       ```
 
    7. Create the main Method
-      - In the same file (ItemDemo.java), outside the Item class, create the main method.
+      - In the same file (StudentDemo.java), outside the Student class, create the main method.
       ```Java
-      public class ItemDemo {
+      public class StudentDemo {
           public static void main(String args) {
               // Code will go here
           }
       }
       ```
-      - Create another Person object named person2 using the default constructor (no arguments).
 
-   8. Create Item Objects
-      - Inside the main method, create three objects of the Item class named item1, item2, and item3, each with a different item name (e.g., "Laptop", "Smartphone", "Tablet").
+   8. Create Student Objects
+      - Inside the main method, create three objects of the Student class named student1, student2, and student3, each with different names, IDs, and GPAs.
       ```Java
-      Item item1 = new Item("Laptop");
-      Item item2 = new Item("Smartphone");
-      Item item3 = new Item("Tablet");
+      Student student1 = new Student("Alice", 101, 3.8);
+      Student student2 = new Student("Bob", 102, 3.5);
+      Student student3 = new Student("Charlie", 103, 3.9);
       ```
       
    9. Call the Instance and Static Methods
-      - In the main method, call the displayItem() method on each of the Item objects (item1, item2, item3).
+      - In the main method, call the displayStudentInfo() method on each of the Student objects (student1, student2, student3).
       ```Java
-      item1.displayItem();
-      item2.displayItem();
-      item3.displayItem();
+      student1.displayStudentInfo();
+      student2.displayStudentInfo();
+      student3.displayStudentInfo();
       ```
-      - Call the static displayObjectCount() method using the class name: Item.displayObjectCount();
+      - Call the static displayStudentCount() method using the class name: Student.displayStudentCount();
       ```Java
-      Item.displayObjectCount();
+      Student.displayStudentCount();
       ```
       
    10. Compile and Run
-       - Save the file as `ItemDemo.java`.
-       - Compile the code using `javac ItemDemo.java` in your terminal or command prompt.
-       - Run the compiled code using `java ItemDemo`.
+       - Save the file as `StudentDemo.java`.
+       - Compile the code using `javac StudentDemo.java` in your terminal or command prompt.
+       - Run the compiled code using `java StudentDemo`.
 
    **Conclusion**
-   This exercise introduced the concept of static members (class variables and class methods) in Java. Static members belong to the class itself, not to any specific object. They are shared among all instances of the class. By understanding static members, you can write more efficient and organized code, especially when dealing with data or behaviors that are common to all objects of a class.
+   This exercise provided an integrated example of modeling a real-world entity (a student) using a class in Java. It combined various object-oriented programming concepts to create a more comprehensive and realistic example. By understanding and applying these concepts, you can build well-structured and maintainable Java programs that effectively model and manage data and behavior.
 
 ### **Step 4: Push Changes to GitHub**
 Once you've completed your changes, follow these steps to upload your work to your GitHub repository.
@@ -234,7 +249,7 @@ Once you've completed your changes, follow these steps to upload your work to yo
    Write a meaningful commit message:
    
    ```bash
-   git commit -m "Submitting OBJPROG Week 05 - Laboratory # 25"
+   git commit -m "Submitting OBJPROG Week 05 - Laboratory # 26"
    ```
    
 4. Push your changes to GitHub:
